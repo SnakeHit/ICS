@@ -1,0 +1,63 @@
+<main>:
+ 8049320:       e8 61 0a 00 00          call   8049d86 <read_line>
+ 8049325:       89 45 f4                mov    %eax,-0xc(%ebp)
+ 8049328:       83 ec 0c                sub    $0xc,%esp
+ 804932b:       ff 75 f4                pushl  -0xc(%ebp)
+ 804932e:       e8 51 01 00 00          call   8049484 <phase_1>
+
+8049484 <phase_1>:
+ 8049484:       55                      push   %ebp
+ 8049485:       89 e5                   mov    %esp,%ebp
+ 8049487:       83 ec 28                sub    $0x28,%esp
+ 804948a:       c7 45 f4 a1 84 76 09    movl   $0x97684a1,-0xc(%ebp)
+ 8049491:       db 45 f4                fildl  -0xc(%ebp)
+ 8049494:       dd 5d e8                fstpl  -0x18(%ebp)
+ 8049497:       8d 45 e0                lea    -0x20(%ebp),%eax
+ 804949a:       50                      push   %eax
+ 804949b:       8d 45 e4                lea    -0x1c(%ebp),%eax
+ 804949e:       50                      push   %eax
+ 804949f:       68 0f a2 04 08          push   $0x804a20f
+ 80494a4:       ff 75 08                pushl  0x8(%ebp)
+ 80494a7:       e8 24 fc ff ff          call   80490d0 <__isoc99_sscanf@plt>
+
+
+080490d0 <__isoc99_sscanf@plt>:
+ 80490d0:       ff 25 34 c0 04 08       jmp    *0x804c034
+ 80490d6:       68 50 00 00 00          push   $0x50
+ 80490db:       e9 40 ff ff ff          jmp    8049020 <.plt>
+
+08049020 <.plt>:
+ 8049020:       ff 35 04 c0 04 08       pushl  0x804c004
+ 8049026:       ff 25 08 c0 04 08       jmp    *0x804c008
+ 804902c:       00 00                   add    %al,(%eax)
+ 
+ 
+ (gdb) x/20xw $esp
+0xffffcfe0:	0x0804c301	0x00000050	0x00000086	0x00000003
+0xffffcff0:	0x00000005	0x00000006	0x00000007	0x00000009
+0xffffd000:	0x00000008	0x00000002	0x00000007	0x00000001<-0xc(%ebp)
+0xffffd010:	0xf7fb0000	0xffffd060	0xffffd048	0x08049362
+0xffffd020:	0x0804c300	0x00040000	0xffffd048	0x08049354
+
+ 
+ 8049533:       8b 45 f4                mov    -0xc(%ebp),%eax	eax = 2
+ 8049536:       8b 54 85 d0             mov    -0x30(%ebp,%eax,4),%edx edx = 3th
+ 804953a:       8b 45 f4                mov    -0xc(%ebp),%eax	eax = 2
+ 804953d:       83 e8 01                sub    $0x1,%eax	eax = 1
+ 8049540:       8b 4c 85 d0             mov    -0x30(%ebp,%eax,4),%ecx ecx = 130
+ 8049544:       8b 5d f4                mov    -0xc(%ebp),%ebx	ebx = 2
+ 8049547:       b8 00 00 00 00          mov    $0x0,%eax	eax = 0
+ 804954c:       29 d8                   sub    %ebx,%eax	eax = -2 -3 -4
+ 804954e:       01 c0                   add    %eax,%eax	eax = -4 -6 -8
+ 8049550:       01 c8                   add    %ecx,%eax	eax = 130-6
+ 8049552:       83 c0 01                add    $0x1,%eax	eax = 130-5
+ 8049555:       39 c2                   cmp    %eax,%edx
+
+ 
+ 134	133	130	125	118	109	98	85	70
+ 
+ 
+ 
+ 
+ 
+
